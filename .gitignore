@@ -1,0 +1,13 @@
+.idea/
+*.swp
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+starfall-save.json
+Panda3D-*/
+Panda3D-*.pz
+previews/packaged/
+previews/final-build/
+release/*.zip
