@@ -11,3 +11,4 @@ Panda3D-*.pz
 previews/packaged/
 previews/final-build/
 release/*.zip
+lantern-save.json

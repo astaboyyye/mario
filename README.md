@@ -1,73 +1,83 @@
-# Mario: The Last Train to Starfall
+# Lantern Route
 
-A five-stage Mario fan adventure with real 3D characters, geometry, lighting,
-shadows, and a following camera. Movement stays on a side-scrolling plane.
+A hand-drawn side-scrolling platformer. Twelve letters, thirteen stages, one
+lamp gone dark.
 
-Bowser Jr. has taken the festival train. Mario follows the railway, repairing
-what Jr. broke and catching up before the train reaches Starfall Bridge.
-
-![Orchard](previews/stage-1.png)
-
-[Compare the original game and the 3D pilot](previews/COMPARISON.md).
-
-## Campaign
-
-| Stop | Quest | Main challenge |
-| --- | --- | --- |
-| Applewater Orchard | Refill the spare engine by opening two water wheels | Jumping, raised paths, optional medals |
-| Switchback Quarry | Release the two lift brakes | Riding moving platforms |
-| Copperpipe Foundry | Restore power to the freight line | Reversing conveyor belts with Z |
-| The Sky Express | Recover two conductor keys | Defeating guards between train cars |
-| Starfall Engine | Vent the shield and stop Bowser Jr. | Three-hit boss with projectiles |
-
-Each stage has three optional medals. Repairs and medals survive retries within
-a stage. Clearing a stage saves the next unlocked stop and your best medal count
-to `starfall-save.json` beside the executable. Re-entering a stage starts a new run.
+The lighthouse at Lanternhead has lost its lens. You are Juno, in your first
+week as the valley's post carrier, and the keeper has given you twelve letters
+and one instruction: don't chase the thief, just deliver these, in order.
+Every stage ends at a door. Every door gets a letter, and the letters tell
+the story.
 
 ## Play
 
-Run `mario_level_1.exe`. The name is retained so existing shortcuts still work.
+Run `dist\LanternRoute.exe`, or from source:
+
+```powershell
+.\.venv\Scripts\python.exe lantern_route.py
+```
 
 | Control | Action |
 | --- | --- |
-| Left/right arrows or A/D | Move |
-| Space | Jump; hold for a higher jump |
-| Left Shift | Run |
-| Z | Star burst; recharges in 2.6 seconds |
-| E | Operate a nearby wheel or lever |
-| Enter | Start / continue dialogue / next stage |
-| P or Escape | Pause |
-| R | Return to the current checkpoint |
-| M | Mute |
-| F11 | Fullscreen |
+| Arrows or A / D | Move |
+| Space or Z | Jump. Hold for height |
+| Shift or X | Run. Throw the Post Star when you have it |
+| Up / Down | Climb ladders. Down + Jump drops through a ledge |
+| R | Back to the last checkpoint |
+| Esc or P | Pause |
+| L (on the route map) | Re-read a delivered letter |
+| M / F11 | Mute / fullscreen |
 
-The earlier Pygame Sunstone Trail remains available with `mario_level_1.exe --legacy`.
+A gamepad works too: stick or d-pad, A to jump, B or X to run.
 
-## Source and build
+## What is in it
 
-Python 3.13 is used for the Windows build.
+- Four regions and an epilogue: Greenway, Saltpan, Frostline, Underhollow,
+  then the walk up to Lanternhead. Thirteen stages.
+- Each stage is built around one idea and teaches it before testing it:
+  shell kicking, falling planks, needles on a timer, keys and wells, red and
+  blue switch blocks, a double jump, stone faces you can ride, a vertical
+  climb, stages in the dark, and a five-hit boss.
+- Three abilities found in item boxes: the Cloud Coat (float), Spring Heels
+  (double jump) and the Post Star (a thrown star that comes back and fetches
+  things through walls).
+- Three gems hidden in every stage. Finding all three un-smudges the
+  postscript on that stage's letter.
+- Three hearts. A pit costs one and puts you back on the last safe ground;
+  losing all three returns you to the checkpoint. There are no lives.
+- Progress, gems and best times save to `lantern-save.json` beside the game.
+
+## Source
+
+| Path | Contents |
+| --- | --- |
+| `lantern/levels/*.txt` | The stages, as text. See `LEVELS.md` |
+| `lantern/story.py` | Every letter, cutscene and sign |
+| `lantern/actors.py` | Player, enemies, pickups, boss |
+| `lantern/world.py` | Level loading, collision, backgrounds |
+| `lantern/play.py` | The in-stage rules, camera, HUD |
+| `lantern/game.py` | Window, input, title, route map, story screens |
+| `tools/levelcheck.py` | Stage previews and a reachability check using the real jump physics |
+| `tools/make_audio.py` | Synthesises all music and sound effects |
+| `tools/bot.py` | A crude auto-player used as a crash test |
 
 ```powershell
-python3.13 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-build.txt
-.\.venv\Scripts\python.exe mario_level_1.py
-.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --clean mario_level_1.spec
+.\.venv\Scripts\python.exe -m unittest tests.test_lantern -v
+.\.venv\Scripts\python.exe tools\levelcheck.py
+.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --clean lantern_route.spec
 ```
 
-The rebuilt binary is placed in `dist`. Replace the root binary after testing it.
+Only `pygame` is needed to run from source.
 
-```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe mario_level_1.py --smoke-test
-```
+## Older builds
 
-The smoke check runs 600 simulation frames and renders all five stages to
-`previews/`. It also accepts `--output PATH` for packaged-build verification.
+`adventure/` and `data/` hold the two earlier versions of this project (the 3D
+pilot and the original pixel recreation). The launcher no longer starts them.
+They, `resources/graphics`, `resources/music`, `resources/sound`,
+`mario_level_1.exe` and `release/` are not used by Lantern Route and can be
+deleted.
 
-`adventure/campaign.py` contains the authored layouts and dialogue.
-`adventure/simulation.py` handles movement and quest rules.
-`adventure/models.py` defines the 3D character and scenery meshes.
-`adventure/app.py` connects rendering, input, audio, menus, and saving.
+Credits are in `ASSET_CREDITS.md`; design reasoning is in `DESIGN_NOTES.md`.
 
-This is an independent educational fan project. See `ASSET_CREDITS.md` and
-`DESIGN_NOTES.md` for artwork credits and design references.
+See the [release notes](RELEASE_NOTES.md) and [visual comparison](previews/COMPARISON.md)
+with the previous builds.

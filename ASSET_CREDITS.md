@@ -1,26 +1,23 @@
-# Downloaded artwork
+# Credits
 
-Kenney Vleugels: Platformer Art Deluxe, CC0.
-Downloaded 2026-11-09 from the creator upload on OpenGameArt:
-https://opengameart.org/content/platformer-art-deluxe
-https://opengameart.org/sites/default/files/platformerGraphicsDeluxe_Updated.zip
-Creator: https://kenney.nl/assets/platformer-art-deluxe
-License is included at resources/quest_pack/license.txt.
+## Lantern Route
 
-Used in-game: cloud1, bush, gemYellow, grassMid, grassCenter, box,
-boxCoin and boxEmpty. The downloaded pack is included for future world building.
+Art: Kenney Vleugels, Platformer Art Deluxe, CC0.
+https://kenney.nl/assets/platformer-art-deluxe
+License text: `resources/quest_pack/license.txt`.
+The lighthouse, envelopes, lens, backdrops and lighting are drawn in code.
 
-Existing Mario sprites, enemies and audio come from the original educational
-project; the Kenney license applies only to the newly downloaded pack.
+Font: Nunito by Vernon Adams, Cyreal and Jacques Le Bailly, SIL Open Font
+License. License text: `resources/fonts/Nunito-OFL.txt`.
 
-## 3D campaign
+Music and sound effects: written for this game and synthesised by
+`tools/make_audio.py`. No recordings or third-party audio are used.
 
-Character and scenery meshes are defined in adventure/models.py and app.py.
-They are programmatically modeled geometry; no generated bitmap art is used.
-The previous project's Mario audio is reused.
+Story, characters and stage layouts are original to this project.
 
-Nunito by Vernon Adams, Cyreal, and Jacques Le Bailly, SIL Open Font License.
-Source: https://github.com/google/fonts/tree/main/ofl/nunito
-Bundled as a static weight-600 instance. License: resources/fonts/Nunito-OFL.txt.
+Engine: pygame (LGPL).
 
-Panda3D engine: https://www.panda3d.org/ (Modified BSD license).
+## Unused older material
+
+`resources/graphics`, `resources/music` and `resources/sound` belong to the
+earlier recreation in `data/` and are not loaded by Lantern Route.

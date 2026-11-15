@@ -1,13 +1,34 @@
-# Before and after: Mario pilot
+# Visual history
 
-| Original World 1-1 recreation | Starfall pilot |
+These images are screenshots from the games, captured from their renderers.
+
+## Original recreation to Lantern Route
+
+| Original World 1-1 recreation | Lantern Route: Greenway |
 | --- | --- |
-| ![Original game screenshot](../screenshot.png) | ![3D orchard in The Last Train to Starfall](stage-1.png) |
+| ![Original pixel-art World 1-1](../screenshot.png) | ![Juno jumping through the Greenway](lantern-greenway.png) |
 
-The original was one flat, pixel-art course. The pilot uses 3D models, lighting, shadows, a following camera, and five connected stops. Mario repairs the orchard and quarry, reverses the foundry belts, recovers keys on the train, and stops Bowser Jr. in the engine.
+The original is a single Mario course. Lantern Route is a new side-scrolling
+game with its own hero, hand-drawn tiles, story, and thirteen stages across
+four regions and an epilogue.
 
-| New title screen | Final encounter |
+## Starfall pilot to Lantern Route
+
+| Starfall pilot title | Lantern Route title |
 | --- | --- |
-| ![Starfall title screen](title.png) | ![Bowser Jr. in the engine](boss.png) |
+| ![Starfall title screen](title.png) | ![Lantern Route title screen](lantern-title.png) |
 
-The screenshots show the actual game renderer. They are not concept art. The characters and environments are intentionally simple models; their detail and animation remain areas for later work.
+| Starfall pilot: orchard | Lantern Route: Greenway |
+| --- | --- |
+| ![3D orchard in Starfall](stage-1.png) | ![Greenway stage in Lantern Route](lantern-greenway.png) |
+
+The Starfall pilot used 3D geometry and a five-stop campaign. Lantern Route
+returns to 2D platforming with thirteen stages, a delivery story, letters,
+collectible gems, and a route map.
+
+| Lantern Route: route map | Lantern Route: Underhollow |
+| --- | --- |
+| ![Five regions on the route map](lantern-map.png) | ![Torchlit Underhollow stage](lantern-underhollow.png) |
+
+The Lantern Route screenshots were captured with `tools/shot.py`. The older
+screenshots remain in this directory for comparison.
